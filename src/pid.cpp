@@ -94,15 +94,18 @@ void setKi(float i)
 int updatePid(float target,float current)
 {
   float pt;
+
   error = target - current;
   pt = error * pk;
+  float maxintval = 100 - abs(pt);
+  float minintval = maxintval * - 1;
   integral = integral + (error * ik);
-  if(integral > 100)
+  if(integral > maxintval)
   {
-    integral = 100;
-  }else if (integral < - 100)
+    integral = maxintval;
+  }else if (integral < minintval)
   {
-    integral = -100;
+    integral = minintval;
   }
 
   output = integral + pt;

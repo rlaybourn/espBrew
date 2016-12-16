@@ -229,7 +229,7 @@ void loop(void){
     oled.putString(WiFi.localIP().toString());
   }
 
-  if((millis() - disconecttime) > 500000) //if no comms for more than 7 minutes reset
+  if((millis() - disconecttime) > CONNECTIONALARM) //if no comms for more than 7 minutes reset
   {
     oled.clearDisplay();              // Clear screen
     oled.setTextXY(0,0);              // Set cursor position, start of line 0
